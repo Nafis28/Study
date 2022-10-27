@@ -46,4 +46,23 @@ plt.xticks(rotation=90)
 
 #Display the plot
 
-print(plt.show())
+#print(plt.show())
+
+# Create a figure for 2 subplots (1 row, 2 columns)
+fig, ax = plt.subplots(1, 2, figsize = (10,4))
+
+
+# create a bar plot of name vs grade on the first axis
+ax[0].bar(x=df_students.Name, height=df_students.Grade, color='orange')
+ax[0].set_title('Grades')
+ax[0].set_xticklabels(df_students.Name, rotation=90)
+
+# create a pie chart of counts on the second axis
+pass_counts = df_students['Pass'].value_counts()
+ax[1].pie(pass_counts, labels=pass_counts)
+ax[1].set_title('Passing grades')
+ax[1].legend(pass_counts.keys().tolist())
+
+
+#add a tile to the figure
+print(fig.show())
